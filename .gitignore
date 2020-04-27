@@ -10,6 +10,7 @@ __pycache__/
 Ex Files/
 venv3
 *.db
+environment.env
 
 # Distribution / packaging
 .Python
