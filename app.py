@@ -9,11 +9,12 @@ from flask_mail import Mail, Message
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 
 
-
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'planets.db')
 app.config['JWT_SECRET_KEY'] = 'super-secret' # something very diff for prod!
+
+# I'm using mailtrap.io for my dev environment
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
@@ -66,10 +67,10 @@ def db_seed():
     db.session.add(venus)
     db.session.add(earth)
 
-    test_user = User(first_name='hassan',
-                     last_name='mehmood',
-                     email='hassan@testemail.commands',
-                     password='p@ssw0rd')
+    test_user = User(first_name='admin',
+                     last_name='admin',
+                     email='admin@admin.com',
+                     password='admin123')
 
     db.session.add(test_user)
     db.session.commit()
